@@ -1,7 +1,7 @@
 // *********************************************************************************************************************
 /// 
 /// @file 		FBXLoaderSample.cpp
-/// @brief		FBX 2015.1描画サンプル
+/// @brief		FBX 2015.1?画サンプル
 /// 
 /// @author 	Masafumi Takahashi
 /// @date 		2014/05/15
@@ -345,13 +345,13 @@ HRESULT InitDevice()
 	return S_OK;
 }
 
-// FBX描画用初期化
+// FBX?画用初期化
 HRESULT InitApp()
 {
 	HRESULT hr = S_OK;
 
 	// FBXの読み取り
-	// 注：頂点バッファやインデックスバッファはこの時点で生成されるがInputLayoutは作成しない
+	// 注：頂?バッフ?やインデックスバッフ?はこの時?で生成されるがInputLayoutは作成しない
 
 	for (DWORD i = 0; i<NUMBER_OF_MODELS; i++)
 	{
@@ -411,7 +411,7 @@ HRESULT InitApp()
 	};
 	UINT numElements = ARRAYSIZE(layout);
 
-	// Todo: InputLayoutの作成には頂点シェーダが必要なのでこんなタイミングでCreateするのをなんとかしたい
+	// Todo: InputLayoutの作成には頂?シェ??が必要なのでこんな?イ?ングでCreateするのをなんとかしたい
 	for (DWORD i = 0; i<NUMBER_OF_MODELS; i++)
 	{
 		hr = g_pFbxDX11[i]->CreateInputLayout(g_pd3dDevice, pVSBlob->GetBufferPointer(), pVSBlob->GetBufferSize(), layout, numElements);
@@ -505,12 +505,12 @@ HRESULT SetupTransformSRV()
 	// Create ShaderResourceView
 	D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc;
 	ZeroMemory(&srvDesc, sizeof(D3D11_SHADER_RESOURCE_VIEW_DESC));
-	srvDesc.ViewDimension = D3D11_SRV_DIMENSION_BUFFEREX;   // 拡張されたバッファーであることを指定する
+	srvDesc.ViewDimension = D3D11_SRV_DIMENSION_BUFFEREX;   // 拡張されたバッフ??であることを指定する
 	srvDesc.BufferEx.FirstElement = 0;
 	srvDesc.Format = DXGI_FORMAT_UNKNOWN;
-	srvDesc.BufferEx.NumElements = count;                  // リソース内の要素の数
+	srvDesc.BufferEx.NumElements = count;                  // リ??ス内の要素の数
 
-	// 構造化バッファーをもとにシェーダーリソースビューを作成する
+	// ?造化バッフ??をもとにシェ???リ??スビュ?を作成する
 	hr = g_pd3dDevice->CreateShaderResourceView(g_pTransformStructuredBuffer, &srvDesc, &g_pTransformSRV);
 	if (FAILED(hr))
 		return hr;
@@ -724,7 +724,7 @@ void Render()
 	
 	g_pUserAnotation->BeginEvent(L"ModelDraw");
 	
-	// モデルを順番に描画
+	// モデルを順番に?画
 	for (DWORD i = 0; i<NUMBER_OF_MODELS; i++)
 	{
 		// FBX Modelのnode数を取得
@@ -739,7 +739,7 @@ void Render()
 		g_pImmediateContext->VSSetConstantBuffers(0, 1, &g_pcBuffer);
 		g_pImmediateContext->PSSetShader(g_ppsFBX, NULL, 0);
 
-		// 全ノードを描画
+		// 全ノ?ドを?画
 		for (int j = 0; j<nodeCount; j++)
 		{
 
